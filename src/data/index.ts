@@ -6,6 +6,28 @@ export interface Product {
     department: number;
 }
 
+export interface Department {
+    id: number;
+    description: string;
+}
+
+export const depts: Department[] = [
+    {
+        id: 1,
+        description: 'grocery'
+    },
+    {
+        id: 2,
+        description: 'meat'
+    },
+    {
+        id: 3,
+        description: 'produce'
+    }
+]
+
+
+
 export const products: Product[] = [
     {
         upc: '123',
