@@ -1,4 +1,4 @@
-import { add } from './modules/math';
+
 
 console.log('you are ready to start coding typescript...');
 
