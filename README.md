@@ -35,10 +35,12 @@ const addDeptInfo = (items: Product[]) =>
     department: depts.filter((d) => d.id === item.department)[0]
   }));
 
+
 const discountedProducts = compose(addDiscount, twoDecimals, addDeptInfo);
 
 console.log('***** compose)
 console.log(discountedProducts(products));
+
 ```
 
 ![compose](img/compose_01.png)
@@ -74,3 +76,30 @@ console.log(findMeatByAmount(3))
 ```
 
 ![curry](img/curry.png)
+
+## Box
+
+usage:
+
+```js
+import { Box } from './box';
+
+const sorter = (a: Product, b: Product) =>
+  a.description > b.description ? 1 : a.description < b.description ? -1 : 0;
+
+const items = Box(products)
+  .map((x: Product[]) =>
+    x.filter((y: Product) => y.expires >= new Date('11/15/2023'))
+  )
+  .map((x: Product[]) =>
+    x.map((y: Product) => ({
+      ...y,
+      department: depts.filter((d) => d.id === y.department)[0]
+    }))
+  )
+  .fold((x: Product[]) => x.sort(sorter));
+
+console.log(items);
+```
+
+![box](img/box.png)

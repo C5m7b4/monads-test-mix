@@ -17,14 +17,22 @@ import { products, depts } from './data';
 import type { Product, Department } from './data';
 
 console.log('******* compose')
-console.log('products', products)
+// console.log('products', products)
 
 const addDiscount = (items: Product[]) => items.map(item => ({ ...item, price: item.price * 1.1 }))
 const twoDecimals = (items: Product[]) => items.map(item => ({ ...item, price: item.price.toFixed(2) }))
 const addDeptInfo = (items: Product[]) => items.map(item => ({ ...item, department: depts.filter(d => d.id === item.department)[0] }))
+const shortenItemInfo = (items: Product[]) => items.map(item => ({ upc: item.upc, price: item.price }))
 
 const discountedProducts = compose(addDiscount, twoDecimals, addDeptInfo);
 console.log(discountedProducts(products))
+const shortened = compose(addDiscount, twoDecimals, shortenItemInfo)
+
+interface IShort {
+    upc: string;
+    price: number;
+}
+console.log('newarray', (shortened(products) as IShort[]).splice(0, 1))
 
 import { curry } from './utils';
 
@@ -47,3 +55,14 @@ const findGroceryByAmount = (a: number) => findByGrocery(a)
 const findMeatByAmount = (a: number) => findByMeat(a)
 console.log(findGroceryByAmount(5))
 console.log(findMeatByAmount(3))
+
+import { Box } from './box';
+
+const sorter = (a: Product, b: Product) => a.description > b.description ? 1 : a.description < b.description ? -1 : 0
+
+const items = Box(products)
+    .map((x: Product[]) => x.filter((y: Product) => y.expires >= new Date('11/15/2023')))
+    .map((x: Product[]) => x.map((y: Product) => ({ ...y, department: depts.filter(d => d.id === y.department)[0] })))
+    .fold((x: Product[]) => x.sort(sorter));
+
+console.log(items);    

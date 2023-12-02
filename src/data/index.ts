@@ -31,63 +31,63 @@ export const depts: Department[] = [
 export const products: Product[] = [
     {
         upc: '123',
-        description: 'item 1',
+        description: 'snickers',
         expires: new Date('11/1/2023'),
         price: 2.99,
         department: 1
     },
     {
         upc: '234',
-        description: 'item 2',
+        description: 'candy',
         expires: new Date('11/1/2023'),
         price: 3.99,
         department: 1
     },
     {
         upc: '345',
-        description: 'item 3',
+        description: 'pork chops',
         expires: new Date('11/15/2023'),
         price: 1.99,
         department: 2
     },
     {
         upc: '456',
-        description: 'item 4',
+        description: 'steak',
         expires: new Date('11/12/2023'),
         price: 2.99,
         department: 2
     },
     {
         upc: '567',
-        description: 'item 5',
+        description: 'chicken',
         expires: new Date('11/18/2023'),
         price: 2.99,
         department: 2
     },
     {
         upc: '678',
-        description: 'item 6',
+        description: 'bananas',
         expires: new Date('11/2/2023'),
         price: 1.49,
         department: 3
     },
     {
         upc: '789',
-        description: 'item 7',
+        description: 'apples',
         expires: new Date('11/10/2023'),
         price: 2.99,
         department: 3
     },
     {
         upc: '765',
-        description: 'item 8',
+        description: 'cherries',
         expires: new Date('11/19/2023'),
         price: 4.95,
         department: 3
     },
     {
         upc: '876',
-        description: 'item 9',
+        description: 'avacaco',
         expires: new Date('11/10/2023'),
         price: 2.99,
         department: 3
