@@ -7,8 +7,10 @@
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest && npm run coverage && npm run report",
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "report": "open coverage/lcov-report/index.html"
   },
   "keywords": [],
   "author": "",
