@@ -43,6 +43,8 @@ console.log(discountedProducts(products));
 
 ```
 
+
+
 ![compose](img/compose_01.png)
 
 tradionally the compose function reads from right to left, but I really don't like that implementation so this version of cmpose reads from left to right. First we add the discount, then fix the decimals, and then replace the department information with a little more details.
