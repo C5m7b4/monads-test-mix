@@ -1,6 +1,9 @@
 # monads mix-up
 
 ![CircleCI](https://img.shields.io/circleci/build/github/C5m7b4/monads-test-mix/master)
+![Codecov](https://img.shields.io/codecov/c/github/C5m7b4/monads-test-mix)
+![GitHub License](https://img.shields.io/github/license/C5m7b4/monads-test-mix)
+![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/C5m7b4/monads-test-mix)
 
 List of Monads available:
 
