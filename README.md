@@ -103,3 +103,17 @@ console.log(items);
 ```
 
 ![box](img/box.png)
+
+## maybe
+
+```j2
+import { Maybe } from './maybe';
+
+const maybeItems = Maybe.just(products)
+    .map((x: Product[]) => x.filter(y => y.expires <= new Date('11/15/2023')))
+    .map((x: Product[]) => x.map(y => ({ ...y, department: depts.filter(d => d.id === y.department)[0] })))
+
+console.log(maybeItems.extract())
+```
+
+![maybe](img/maybe.png)

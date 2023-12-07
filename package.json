@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "test": "jest && npm run coverage && npm run report",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --coverage",
     "coverage": "jest --coverage",
     "report": "open coverage/lcov-report/index.html"
   },
@@ -39,5 +39,19 @@
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 30,
+        "lines": 20,
+        "statements": 20,
+        "functions": 20
+      }
+    }
   }
 }

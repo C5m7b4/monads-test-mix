@@ -75,4 +75,39 @@ const maybeItems = Maybe.just(products)
     .map((x: Product[]) => x.filter(y => y.expires <= new Date('11/15/2023')))
     .map((x: Product[]) => x.map(y => ({ ...y, department: depts.filter(d => d.id === y.department)[0] })))
 
-console.log(maybeItems.extract())    
+console.log(maybeItems.extract())
+
+const addOne = (x: number) => x + 1;
+const addTwo = (x: number) => x + 2;
+const chained = Maybe.chain(addTwo, addOne)([1, 2, 3])
+console.log('chained', chained)
+
+const mapped = Maybe.just([1, 2, 3])
+    .map((x: number[]) => x.map(addOne))
+
+console.log('mapped', mapped.extract())
+
+
+const arr = [1, 2, 3]
+const flat = Maybe.just<number[]>(arr)
+    .flatMap()
+
+console.log('flat', flat.extract())
+
+import { Right, Left, Either, isLeft, isRight } from './either';
+
+const sqrt = (x: number): Either<null, number> => x === 0
+    ? Left(null) : Right(x * x);
+
+const leftAnd = Left(0).leftAndThen(sqrt)
+console.log(leftAnd.isLeft())
+
+const l = Left<string, string>('hello1').unwrapLeftOr('hello2')
+console.log('LEFT', l)
+
+const lOr = Left<number, number>(5).unwrapLeftOrElse(x => x)
+console.log('lOr', lOr);
+
+const r = Right<number, number>(5)
+    .mapRight(x => x + 5).unwrap()
+console.log('r', r)
