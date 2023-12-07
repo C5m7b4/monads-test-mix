@@ -1,5 +1,7 @@
 # monads mix-up
 
+![CircleCI](https://img.shields.io/circleci/build/github/C5m7b4/monads-test-mix/master)
+
 List of Monads available:
 
 - Box
