@@ -70,7 +70,7 @@ export function Ok<T, E = never>(val: T): ResOk<T, E> {
       return val;
     },
     unwrapOr(_optb: T): T {
-      return val;
+      return val || _optb
     },
     unwrapOrElse(_fn: (err: E) => T): T {
       return val;
