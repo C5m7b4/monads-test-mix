@@ -111,3 +111,77 @@ console.log('lOr', lOr);
 const r = Right<number, number>(5)
     .mapRight(x => x + 5).unwrap()
 console.log('r', r)
+
+import { Some, None, isSome, isNone } from './option';
+
+type Difficulty = 'easy' | 'medium' | 'hard'
+
+type Hobby = {
+    name: string;
+    difficulty: Difficulty,
+    minAge: number
+}
+
+const hobbies: Hobby[] = [
+    {
+        name: 'rc',
+        difficulty: 'hard',
+        minAge: 15
+    },
+    {
+        name: 'painting',
+        difficulty: 'easy',
+    }
+]
+
+
+const s = Some(hobbies)
+    .map(x => x.map(y => ({ ...y, extra: y.minAge > 12 ? 'old enough' : 'too young' })))
+console.log(isSome(s))
+console.log(isNone(s))
+console.log(s.unwrap())
+
+console.log(Some(5).map(x => x + 1).unwrap())
+console.log('***option');
+
+console.log(Some(5).andThen(x => Some(x)).unwrap())
+console.log(Some(null).match({
+    some: x => x,
+    none: 'error'
+}))
+console.log(Some(null).map(x => x).isNone())
+
+console.log('** option');
+
+import { Ok, Err } from './result';
+console.log('************ result')
+console.log(Some(null).andThen(x => Some(null)).isNone())
+const ok = Ok(5)
+console.log(ok.unwrap())
+
+const v = 5;
+const ok1 = Ok(null).match({
+    ok: (v) => v,
+    err: () => null
+})
+console.log(ok1)
+
+console.log(Ok(5).map(x => x * 2).orElse(x => Ok(x)).unwrap())
+console.log(Ok(5).mapErr(x => Ok(null)).unwrap())
+
+console.log(Err(5).ok().isNone())
+
+console.log(Err('hello').unwrapOrElse(x => x))
+console.log('*********')
+console.log(Err(null).match({
+    ok: x => x,
+    err: x => x
+}))
+console.log(Err(5).map(x => x).isErr())
+
+console.log(Err(5).mapErr(x => x).isErr())
+
+console.log(Err(5).orElse(x => Err(5)).isErr())
+
+console.log('****************')
+

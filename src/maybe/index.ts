@@ -1,4 +1,4 @@
-const isNullOrUndef = <T>(x: T) => x === null || typeof x === 'undefined';
+export const isNullOrUndef = <T>(x: T) => x === null || typeof x === 'undefined';
 
 const maybe = <T>(x: T) => ({
   isNothing: () => isNullOrUndef(x),
@@ -14,6 +14,6 @@ export const Maybe = {
   nothing: () => maybe(null),
   chain:
     (...fns: Function[]) =>
-    (x: any) =>
-      fns.reduce((y, f) => y.map(f), x),
+      (x: any) =>
+        fns.reduce((y, f) => y.map(f), x),
 };

@@ -1,3 +1,5 @@
+import { isNullOrUndef } from '../maybe';
+
 export const OptionType = {
   Some: Symbol(':Some'),
   None: Symbol(':None'),
@@ -36,7 +38,8 @@ export const Some = <T>(val?: T | undefined): Option<T> => {
   // that is supposed to be a some.
   // if it finds something wrong, it switches it
   // to a none automaticaly !!!!
-  return typeof val === 'undefined' ? none<T>() : some<T>(val as T);
+  // return typeof val === 'undefined' ? none<T>() : some<T>(val as T);
+  return isNullOrUndef(val) ? none<T>() : some<T>(val as T)
 };
 
 const some = <T>(val: T): OptSome<T> => {
@@ -91,7 +94,7 @@ const none = <T>(): OptNone<T> => {
   };
 };
 
-export function IsSome<T>(val: Option<T>): val is OptSome<T> {
+export function isSome<T>(val: Option<T>): val is OptSome<T> {
   return val.isSome();
 }
 

@@ -46,6 +46,9 @@
     "collectCoverageFrom": [
       "./src/**"
     ],
+    "coveragePathIgnorePatterns": [
+      "./src/index.ts"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 30,
